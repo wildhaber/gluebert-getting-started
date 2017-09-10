@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>gluebert.js starter</title>
+</head>
+<body>
+
+<h1>Welcome to the index.html</h1>
+<p>Yes, we will add some more interesting content very soon.</p>
+
+<script>
+    var appElement = document.createElement('script');
+    appElement.src = '/app.js';
+
+    var scriptElement = document.createElement('script');
+
+    if('MutationObserver' in window
+        && 'content' in document.createElement('template')) {
+        document.body.appendChild(appElement);
+    } else {
+        window.addEventListener('load', function() {
+            scriptElement.src = 'https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.10/webcomponents-loader.js';
+            document.body.appendChild(scriptElement);
+        });
+    }
+
+    window.addEventListener('WebComponentsReady', function() {
+        document.body.appendChild(appElement);
+    });
+</script>
+
+</body>
+</html>

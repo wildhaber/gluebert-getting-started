@@ -1,0 +1,49 @@
+{
+  "name": "gluebert-getting-started",
+  "version": "1.0.0",
+  "description": "Getting started project for gluebert.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/webpack --config webpack.config.js",
+    "serve": "./node_modules/.bin/http-server dist -o"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wildhaber/gluebert-getting-started.git"
+  },
+  "keywords": [
+    "gluebert.js",
+    "getting",
+    "started"
+  ],
+  "author": "Raphael Wildhaber",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wildhaber/gluebert-getting-started/issues"
+  },
+  "homepage": "https://github.com/wildhaber/gluebert-getting-started#readme",
+  "dependencies": {
+    "gluebert": "0.0.9"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "html-loader": "^0.5.1",
+    "http-server": "^0.10.0",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.6",
+    "sass-loader": "^6.0.6",
+    "webpack": "^3.5.6"
+  }
+}
