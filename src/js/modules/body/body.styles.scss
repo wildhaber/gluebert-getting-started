@@ -1,0 +1,19 @@
+@import './../../../styles/mixin';
+@import './../../../styles/variables';
+@import './../../../styles/reset';
+
+$base-elements: 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'a';
+
+.c-body {
+
+  @each $element in $base-elements {
+    #{$element} {
+      @include font($element);
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+}

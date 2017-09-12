@@ -2,9 +2,12 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const ENTRY_POINTS = {
-    // Set your app's entry point
+    critical: [
+        './src/critical.js',
+    ],
     app: [
         'babel-polyfill', // polyfills necessary if you want to support not so modern browsers
         './src/app.js', // your app's entry point
@@ -41,9 +44,28 @@ module.exports = {
                 },
             },
 
-            // Style-Loader for Sass
             {
                 test: /\.scss$/,
+                exclude: /critical\.scss$/,
+                use: [
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1,
+                            minimize: true,
+                        },
+                    },
+                    {
+                        loader: 'postcss-loader',
+                    },
+                    {
+                        loader: 'sass-loader',
+                    },
+                ],
+            },
+            {
+                test: /\.scss$/,
+                include: /critical\.scss$/,
                 use: ExtractTextPlugin.extract(
                     {
                         use: [
@@ -67,6 +89,7 @@ module.exports = {
         ],
     },
     plugins: [
+        new webpack.optimize.UglifyJsPlugin({ mangle: true }),
         new ExtractTextPlugin({
             filename: '[name].css',
             allChunks: true,
@@ -74,7 +97,15 @@ module.exports = {
         }),
         new CopyWebpackPlugin([{
             from: `src/index.html`,
+        },{
+            from: `src/assets/`,
         }]),
+        new CompressionPlugin({
+            algorithm: 'gzip',
+            test: /\.(js|html|ttf|woff|woff2|svg|eot)$/,
+            threshold: 0,
+            minRatio: 0.8,
+        }),
     ],
     output: {
         filename: '[name].js',

@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./node_modules/.bin/webpack --config webpack.config.js",
-    "serve": "./node_modules/.bin/http-server dist -o"
+    "build": "rm -rf ./dist && ./node_modules/.bin/webpack --config webpack.config.js",
+    "build:watch": "./node_modules/.bin/webpack --config webpack.config.js --watch",
+    "serve": "./node_modules/.bin/http-server dist -g -o"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   },
   "homepage": "https://github.com/wildhaber/gluebert-getting-started#readme",
   "dependencies": {
+    "animejs": "^2.0.2",
     "gluebert": "0.0.9"
   },
   "devDependencies": {
@@ -35,6 +37,7 @@
     "babel-preset-stage-1": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
+    "compression-webpack-plugin": "^1.0.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.0",
