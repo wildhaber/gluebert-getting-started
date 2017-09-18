@@ -29,6 +29,15 @@ npm install gluebert --save
 yarn add gluebert
 ```
 
+## gluebert-cli
+
+```bash
+npm install gluebert-cli -g
+```
+
+Read more about cli capabilities: https://github.com/wildhaber/gluebert-cli/
+
+
 ## Documentation
 
  - [Getting Started](https://gluebert.com/getting-started/)
